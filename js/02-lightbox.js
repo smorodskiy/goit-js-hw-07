@@ -2,9 +2,6 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const gallery = document.querySelector(".gallery");
-var lightbox = new SimpleLightbox(".gallery", {
-  /* options */
-});
 
 // Append all images from array to html
 galleryItems.forEach((imgData) => {
@@ -19,18 +16,24 @@ function createElement(preview, original, description) {
   const img = document.createElement("img");
   link.classList.add("gallery__item");
   link.setAttribute("href", original);
-
   img.classList.add("gallery__image");
   img.setAttribute("src", preview);
   img.setAttribute("alt", description);
-
   link.appendChild(img);
   return link;
 }
 
-console.log(lightbox);
+// Init lightbox
+var lightbox = new SimpleLightbox(".gallery a", {
+  captions: true,
+  captionType: "attr",
+  captionsData: "alt",
+  captionPosition: "bottom",
+  captionDelay: 250,
+});
 
-lightbox.on('show.simplelightbox', function () {
-	// do something…
-    console.log('show');
+// Empty func, on future
+lightbox.on("show.simplelightbox", function () {
+  // do something…
+//   console.log("show");
 });
