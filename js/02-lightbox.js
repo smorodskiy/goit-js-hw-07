@@ -2,12 +2,15 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const gallery = document.querySelector(".gallery");
+const imgElements = document.createDocumentFragment();
 
 // Append all images from array to html
 galleryItems.forEach((imgData) => {
   const img = createElement(imgData.preview, imgData.original, imgData.description);
-  gallery.append(img);
+  imgElements.appendChild(img);
 });
+
+gallery.append(imgElements);
 
 // Version with JS
 // Create box of image
